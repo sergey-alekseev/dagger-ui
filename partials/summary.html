@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h1>Summary</h1>
+</div>
+
+<div class="alert alert-danger" ng-show="error.hasError">
+  <p>{{error.message}}</p>
+</div>
+
+<div class="row" ng-show="!error.hasError">
+  <div class="col-md-4">
+    <h2>Today's KPIs</h2>
+    <dl class="dl">
+      <dt>{{tallies.latest.count.total}}</dt>
+      <dd>publications to date</dd>
+      <dt>{{tallies.latest.count.fulltext / tallies.latest.count.total * 100 |number}}%</dt>
+      <dd>of publications have an accessible full text</dd>
+      <dt>{{tallies.latest.count.license / tallies.latest.count.total * 100 |number}}%</dt>
+      <dd>of publications have an acceptable license</dd>
+      <dt>{{tallies.latest.count.archive / tallies.latest.count.total * 100 |number}}%</dt>
+      <dd>of publications have an acceptable archive arrangement</dd>
+    </dl>
+  </div>
+  <div class="col-md-8">
+    <h2>KPI History</h2>
+      <div id="kpi-history-chart">
+	<svg></svg>
+      </div>
+  </div>
+</div>
+
+<div>
+  <h2>Breakdown</h2>
+</div>
+
+<div>
+  <h2>Publishers</h2>
+</div>
