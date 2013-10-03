@@ -54,10 +54,7 @@ daggerApp.controller('summaryCtrl', function($scope, $http) {
 		.transition().duration(500)
 		.call(chart);
 	    
-	    nv.utils.windowResize(function() { 
-		d3.select('#kpi-history-chart svg').call(chart);
-	    });
-
+	    nv.utils.windowResize(function() { chart.update(); });
 	    return chart;
 	});
 
@@ -65,36 +62,24 @@ daggerApp.controller('summaryCtrl', function($scope, $http) {
 
     goGet($http, $scope, '/publishers', 'publishers', function(data) {
 	$.each(data, function(index, publisher) {
-	    var $row = $('<div>')
-		.attr('class', 'row');
-	    var $titleTd = $('<div>')
-		.append($('<h4>').append(publisher.name))
-		.attr('class', 'col-md-4')
-		.appendTo($row);
-	    var $svg = $('<svg>')
-		.attr('style', 'height: 80px;');
-	    var $div = $('<div>')
-		.append($svg)
-		.attr('id', 'publisher-chart-' + publisher.prefix);
-	    var $graphTd = $('<div>')
-		.attr('class', 'col-md-8')
-		.append($div)
-		.appendTo($row);
-
-	    $row.appendTo('#publisher-charts');
-
 	    nv.addGraph(function() {
 		var chart = nv.models.bulletChart();
+
+		var $row = d3.select('#publisher-charts').append('div');
+		$row.attr('class', 'row');
+		var $title = $row.append('div');
+		$title.attr('class', 'col-md-3');
+		$title.html('<h4>' + publisher.name);
+		var $chartContainer = $row.append('div');
+		$chartContainer.attr('class', 'col-md-9');
+		var $chartSvg = $chartContainer.append('svg');
+		$chartSvg.attr('style', 'width: *; height:60px');
 		
-		d3.select('#publisher-chart-' + publisher.prefix + ' svg')
-		    .datum(publisher)
+		$chartSvg.datum(publisher)
 		    .transition().duration(1000)
 		    .call(chart);
 
-		nv.utils.windowResize(function() {
-		    d3.select('#publisher-chart-' + publisher.prefix + ' svg').call(chart);
-		});
-
+		nv.utils.windowResize(function() { chart.update(); })
 		return chart;
 	    });
 	});
