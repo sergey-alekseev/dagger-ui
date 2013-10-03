@@ -34,8 +34,6 @@ daggerApp.config(['$routeProvider', function($routeProvider) {
 
 daggerApp.controller('summaryCtrl', function($scope, $http) {
     goGet($http, $scope, '/tallies', 'tallies', function(data) {
-
-	// KPI History Chart
 	nv.addGraph(function() {
 	    var chart = nv.models.lineChart();
 	    
@@ -57,7 +55,26 @@ daggerApp.controller('summaryCtrl', function($scope, $http) {
 	    nv.utils.windowResize(function() { chart.update(); });
 	    return chart;
 	});
+    });
 
+    goGet($http, $scope, '/breakdowns', 'breakdowns', function(data) {
+	$.each(['license', 'fulltext', 'archive'], function(index, chartName) {
+	    nv.addGraph(function() {
+		var chart = nv.models.pieChart()
+		    .x(function(d) { return d.label })
+		    .y(function(d) { return d.value })
+		    .showLabels(true)
+		    .donut(true);
+
+		d3.select('#' + chartName + '-breakdown-chart svg')
+		    .datum(data[chartName][0]['values'])
+		    .transition().duration(500)
+		    .call(chart);
+
+		nv.utils.windowResize(function() { chart.update(); });
+		return chart;
+	    });
+	});
     });
 
     goGet($http, $scope, '/publishers', 'publishers', function(data) {
@@ -68,12 +85,12 @@ daggerApp.controller('summaryCtrl', function($scope, $http) {
 		var $row = d3.select('#publisher-charts').append('div');
 		$row.attr('class', 'row');
 		var $title = $row.append('div');
-		$title.attr('class', 'col-md-3');
+		$title.attr('class', 'col-md-4');
 		$title.html('<h4>' + publisher.name);
 		var $chartContainer = $row.append('div');
-		$chartContainer.attr('class', 'col-md-9');
+		$chartContainer.attr('class', 'col-md-8');
 		var $chartSvg = $chartContainer.append('svg');
-		$chartSvg.attr('style', 'width: *; height:60px');
+		$chartSvg.attr('style', 'height:60px');
 		
 		$chartSvg.datum(publisher)
 		    .transition().duration(1000)
