@@ -1,5 +1,3 @@
-var serviceUrl = 'http://localhost:9292';
-
 var daggerApp = angular.module('daggerApp', []);
 
 var httpErrorHandler = function($scope) {
