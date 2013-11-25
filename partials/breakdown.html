@@ -5,3 +5,53 @@
 <div class="bs-callout bs-callout-error">
   <p>{{error.message}}</p>
 </div>
+
+<div class="row" ng-show="!error.hasError">
+  <h2>Indicator History</h2>
+  <table id="tally-table">
+    <thead>
+      <tr>
+	<th>Date</th>
+	<th># publications</th>
+	<th># acceptably archived</th>
+	<th># where archive arrangement not known</th>
+	<th># unacceptably archived</th>
+	<th># with reachable full-text link</th>
+	<th># without full-text link</th>
+	<th># with unreachable full-text link</th>
+	<th># acceptably licensed</th>
+	<th># without licence information</th>
+	<th># unacceptably licensed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="tally in tallies">
+	<td>{{tally.date}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="row" ng-show="!error.hasError">
+  <h2>Publisher Content</h2>
+  <table id="publisher-table">
+    <thead>
+      <tr>
+	<th>Publisher</th>
+	<th># publications</th>
+	<th># acceptably archived</th>
+	<th># where archive arrangement not known</th>
+	<th># unacceptably archived</th>
+	<th># with reachable full-text link</th>
+	<th># without full-text link</th>
+	<th># with unreachable full-text link</th>
+	<th># acceptably licensed</th>
+	<th># without licence information</th>
+	<th># unacceptably licensed</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+

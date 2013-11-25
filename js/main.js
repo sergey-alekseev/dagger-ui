@@ -102,6 +102,44 @@ daggerApp.controller('summaryCtrl', function($scope, $http) {
 });
 
 daggerApp.controller('breakdownCtrl', function($scope, $http) {
+    goGet($http, $scope, '/tally-table', 'tallies', function(data) {
+	$('#tally-table').dataTable().fnDestroy();
+	$('#tally-table').dataTable({
+	    "aaData": data,
+	    "aoColumns": [
+		{ "sTitle": "Date" },
+		{ "sTitle": "# publications" },
+		{ "sTitle": "# acceptable archive" },
+		{ "sTitle": "# where archive arrangement not known" },
+		{ "sTitle": "# unacceptable archive" },
+		{ "sTitle": "# reachable full-text" },
+		{ "sTitle": "# without full-text link" },
+		{ "sTitle": "# unreachable full-text" },
+		{ "sTitle": "# acceptable license" },
+		{ "sTitle": "# without license information" },
+		{ "sTitle": "# unacceptable license" },
+		{ "stitle": "# acceptable overall" }]});
+    });
+
+    goGet($http, $scope, '/publisher-table', 'publishers', function(data) {
+	$('#publisher-table').dataTable().fnDestroy();
+	$('#publisher-table').dataTable({
+	    "aaData": data,
+	    "aoColumns": [
+		{ "sTitle": "Publisher" },
+		{ "sTitle": "# publications" },
+		{ "sTitle": "# acceptable archive" },
+		{ "sTitle": "# where archive arrangement not known" },
+		{ "sTitle": "# unacceptable archive" },
+		{ "sTitle": "# reachable full-text" },
+		{ "sTitle": "# without full-text link" },
+		{ "sTitle": "# unreachable full-text" },
+		{ "sTitle": "# acceptable license" },
+		{ "sTitle": "# without license information" },
+		{ "sTitle": "# unacceptable license" },
+		{ "sTitle": "# acceptable overall" }]});
+
+    });
 });
 
 daggerApp.controller('statusCtrl', function($scope, $http) {
@@ -111,3 +149,4 @@ daggerApp.controller('statusCtrl', function($scope, $http) {
 daggerApp.controller('brandingCtrl', function($scope, $http) {
     goGet($http, $scope, '/branding', 'branding');
 });
+
