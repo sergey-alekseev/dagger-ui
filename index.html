@@ -48,7 +48,7 @@
             <li><a href="#status">History</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-	    <li ng-repeat="branding.links as link">
+	    <li ng-repeat="link in branding.links">
 	      <a href="{{link.url}}">{{link.label}}</a>
 	    </li>
 	  </ul>
