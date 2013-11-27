@@ -47,6 +47,11 @@
             <li><a href="#breakdown">Data</a></li>
             <li><a href="#status">History</a></li>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+	    <li ng-repeat="branding.links as link">
+	      <a href="{{link.url}}">{{link.label}}</a>
+	    </li>
+	  </ul>
         </div>
       </div>
     </div>
