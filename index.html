@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="daggerApp"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="daggerApp"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="daggerApp"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" ng-app="daggerApp"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="daggerApp" ng-controller="brandingCtrl"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="daggerApp" ng-controller="brandingCtrl"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="daggerApp" ng-controller="brandingCtrl"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="daggerApp" ng-controller="brandingCtrl"> <!--<![endif]-->
 
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Dagger Dashboard</title>
+    <title>{{branding.title}}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     
@@ -30,7 +30,7 @@
         <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
     
-     <div class="navbar navbar-default navbar-fixed-top" ng-controller="brandingCtrl">
+     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" 
