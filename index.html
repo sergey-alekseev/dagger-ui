@@ -17,6 +17,11 @@
       padding-top: 50px;
       padding-bottom: 20px;
       }
+      .footer {
+      padding-top: 19px;
+      color: #777;
+      border-top: 1px solid #e5e5e5;
+      }
     </style>
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/nv.d3.css">
@@ -58,12 +63,14 @@
 
     <div class="container" ng-view=""></div>
 
-    <div class="footer">
-      <ul class="list-inline">
-        <li ng-repeat="link in branding.footer-links">
-          <a href="{{link.url}}">{{link.label}}</a>
-        </li>
-      </ul>
+    <div class="container">
+      <div class="footer">
+	<ul class="list-inline">
+          <li ng-repeat="link in branding['footer-links']">
+            <a href="{{link.url}}">{{link.label}}</a>
+          </li>
+	</ul>
+      </div>
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
